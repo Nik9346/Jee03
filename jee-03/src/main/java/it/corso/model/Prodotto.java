@@ -1,29 +1,33 @@
-       package it.corso.model;
+package it.corso.model;
 
-public class Prodotto 
+public class Prodotto
 {
 	private int id;
 	private String descrizione;
 	private double prezzo;
 	
-	public int getId() {
+	public int getId()
+	{
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(int id)
+	{
 		this.id = id;
 	}
-	public String getDescrizione() {
+	public String getDescrizione()
+	{
 		return descrizione;
 	}
-	public void setDescrizione(String descrizione) {
+	public void setDescrizione(String descrizione)
+	{
 		this.descrizione = descrizione;
 	}
-	public double getPrezzo() {
+	public double getPrezzo()
+	{
 		return prezzo;
 	}
-	public void setPrezzo(double prezzo) {
+	public void setPrezzo(double prezzo)
+	{
 		this.prezzo = prezzo;
 	}
-	
 }
-

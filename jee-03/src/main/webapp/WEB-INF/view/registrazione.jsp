@@ -2,14 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Registrazione Prodotto</title>
+	<meta charset="UTF-8">
+	<title>Registrazione Prodotto</title>
 </head>
 <body>
 	<form action="registrazione" method="post">
-		<input type= "number" name="id" required>
+		<input type="number" name="id" required>
 		<br>
-		<input type ="text" name="descrizione"  required>
+		<input type="text" name="descrizione" required>
 		<br>
 		<input type="number" step="any" name="prezzo" required>
 		<br>
