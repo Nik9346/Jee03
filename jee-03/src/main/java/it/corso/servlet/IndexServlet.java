@@ -16,7 +16,7 @@ public class IndexServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 	
-	@EJB
+	@EJB //particolare classe java che implementa metodi atti a soddisfare la logica di business di un'applicazione, deve gestire: Persistenza, Concorrenza, Sicurezza.
 	private ProdottoServiceLocal prodottoServiceLocal;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 

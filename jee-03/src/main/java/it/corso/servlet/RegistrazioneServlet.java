@@ -9,12 +9,12 @@ import java.io.IOException;
 import it.corso.service.ProdottoServiceRemote;
 
 // localhost:8080/jee-03/registrazione
-@WebServlet("/registrazione")
+@WebServlet("/registrazione") 
 public class RegistrazioneServlet extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
 	
-	@EJB
+	@EJB //particolare classe java che implementa metodi atti a soddisfare la logica di business di un'applicazione, deve gestire: Persistenza, Concorrenza, Sicurezza.
 	private ProdottoServiceRemote prodottoServiceRemote;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -22,14 +22,14 @@ public class RegistrazioneServlet extends HttpServlet
 	{
 		request
 		.getServletContext()
-		.getRequestDispatcher("/WEB-INF/view/registrazione.jsp")
+		.getRequestDispatcher("/WEB-INF/view/registrazione.jsp") //deleghiamo la richiesta al file jsp
 		.forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException 
 	{
-		prodottoServiceRemote.registraProdotto(
+		prodottoServiceRemote.registraProdotto( //
 				request.getSession(), 
 				request.getParameter("id"),
 				request.getParameter("descrizione"),

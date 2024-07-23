@@ -6,16 +6,17 @@ import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.servlet.http.HttpSession;
 
-@Stateless
+//per aggiungere un ejb dobbiamo andare su crea other e digitare ejb, noi abbiamo scelto SessionBean
+@Stateless  //ejb di tipo stateless
 @LocalBean
-public class ProdottoService implements ProdottoServiceRemote, ProdottoServiceLocal 
+public class ProdottoService implements ProdottoServiceRemote, ProdottoServiceLocal  //normale classe java che implementa le due interfacce create con la creazione dell'ejb
 {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void registraProdotto(HttpSession session, String... datiForm)
 	{
 		List<Prodotto> prodotti = session.getAttribute("prodotti") == null ? 
-				new ArrayList<>() : (List<Prodotto>) session.getAttribute("prodotti");
+				new ArrayList<>() : (List<Prodotto>) session.getAttribute("prodotti"); //prendiamo l'attributo prodotti dalla sessione, se è null, generiamo un new ArrayList di prodotti, altrimenti generiamo una List Prodotti ottenuti dalla Session
 		try
 		{
 			Prodotto prodotto = new Prodotto();
@@ -23,7 +24,7 @@ public class ProdottoService implements ProdottoServiceRemote, ProdottoServiceLo
 			prodotto.setDescrizione(datiForm[1]);
 			prodotto.setPrezzo(Double.parseDouble(datiForm[2]));
 			prodotti.add(prodotto);
-			session.setAttribute("prodotti", prodotti);
+			session.setAttribute("prodotti", prodotti); //Settiamo l'attributo nella session con nome prodotti e contenuto l'array dei prodotti.
 		} catch (Exception e)
 		{
 			System.out.println(e.getMessage());

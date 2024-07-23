@@ -1,11 +1,13 @@
 package it.corso.model;
 
 public class Prodotto
-{
+{ 	
+	//attributi dell'oggetto
 	private int id;
 	private String descrizione;
 	private double prezzo;
 	
+	//getter e setter
 	public int getId()
 	{
 		return id;
