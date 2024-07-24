@@ -22,12 +22,13 @@ public class IndexServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException 
 	{
-		if(request.getParameter("id") != null)
+		if(request.getParameter("id") != null) //se nella richiesta che arriva abbiamo un parametro richiesta id, invochiamo elimina prodotto
 			prodottoServiceLocal.eliminaProdotto(request.getSession(), 
 					Integer.parseInt(request.getParameter("id")));
-		List<Prodotto> prodotti = prodottoServiceLocal.getProdotti(request.getSession());
-		request.setAttribute("prodotti", prodotti);
 		
+		List<Prodotto> prodotti = prodottoServiceLocal.getProdotti(
+									request.getSession());
+									request.setAttribute("prodotti", prodotti);
 		request
 		.getServletContext()
 		.getRequestDispatcher("/WEB-INF/view/index.jsp")

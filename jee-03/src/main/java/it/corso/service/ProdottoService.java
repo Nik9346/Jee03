@@ -27,7 +27,7 @@ public class ProdottoService implements ProdottoServiceRemote, ProdottoServiceLo
 			session.setAttribute("prodotti", prodotti); //Settiamo l'attributo nella session con nome prodotti e contenuto l'array dei prodotti.
 		} catch (Exception e)
 		{
-			System.out.println(e.getMessage());
+			System.out.println(e.getMessage()); //ci stampiamo il messaggio di eccezione
 		}
 	}
 
@@ -35,20 +35,20 @@ public class ProdottoService implements ProdottoServiceRemote, ProdottoServiceLo
 	@Override
 	public List<Prodotto> getProdotti(HttpSession session)
 	{
-		if(session.getAttribute("prodotti") != null)
+		if(session.getAttribute("prodotti") != null) //se la sessione non è vuota andiamo a ritornare la lista presa dall'attributo
 			return (List<Prodotto>) session.getAttribute("prodotti");
-		return new ArrayList<Prodotto>();
+		return new ArrayList<Prodotto>(); //altrimenti ritorniamo una new ArrayList.
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eliminaProdotto(HttpSession session, int id)
 	{
-		List<Prodotto> prodotti = (List<Prodotto>) session.getAttribute("prodotti");
-		prodotti = prodotti
+		List<Prodotto> prodotti = (List<Prodotto>) session.getAttribute("prodotti"); //recuperiamo dalla sessione la lista dei prodotti
+		prodotti = prodotti //filtriamo la lista dei prodotti escludendo dalla lista il prodotto con l'id indicato per eliminarlo
 				.stream()
 				.filter(p -> p.getId() != id)
 				.toList();
-		session.setAttribute("prodotti", prodotti);
+		session.setAttribute("prodotti", prodotti); //salviamo la nuova lista prodotti filtrata dell'elemento eliminato sulla sessione
 	}
 }

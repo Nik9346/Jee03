@@ -15,7 +15,7 @@ public class RegistrazioneServlet extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	
 	@EJB //particolare classe java che implementa metodi atti a soddisfare la logica di business di un'applicazione, deve gestire: Persistenza, Concorrenza, Sicurezza.
-	private ProdottoServiceRemote prodottoServiceRemote;
+	private ProdottoServiceRemote prodottoServiceRemote; // ci agganciamo in remoto questo componente (Attenzione alla blacklist system.properties, se mettiamo in tomee.serialization.class.blacklist = - al posto di * escludiamo tutto)
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException 
@@ -29,7 +29,7 @@ public class RegistrazioneServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException 
 	{
-		prodottoServiceRemote.registraProdotto( //
+		prodottoServiceRemote.registraProdotto( // recuperiamo tutti i parametri passati in post dal fomr e li registriamo
 				request.getSession(), 
 				request.getParameter("id"),
 				request.getParameter("descrizione"),
